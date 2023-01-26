@@ -276,9 +276,9 @@ n_distinct(weightLogInfo$Id)
 
 - heartrateSecond (Id): 14
 
--hourly calorie (Id): 33
+- hourly calorie (Id): 33
 
--hourlyIntensities (Id): 33
+- hourlyIntensities (Id): 33
 
 - hourlySteps (Id): 33
 
