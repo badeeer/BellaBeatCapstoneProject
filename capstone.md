@@ -127,7 +127,7 @@ The data  are organized into 18 files in CSV format, more details in following b
 - > hourlySteps_merged: contain Id, ActivityHour, StepTotal
     (22,099 rows and 3 columns)
 
-. > minutesCaloriesNarrow_merged: Id, ActivityMinutes, Calories
+- > minutesCaloriesNarrow_merged: Id, ActivityMinutes, Calories
    (1,325,580 rows and 3 columns)
 
 - > minutesCaloriesWide_merged: Id, ActivityMinutes, Calories00, Calories01 ..., Calories59
