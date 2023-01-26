@@ -685,7 +685,7 @@ dim(mets)
 
 ```
 
-- columns heartrateSecond and mets .
+- columns heartrateSecond and mets.
 
 ```{r}
 colnames(heartrateSecond)
