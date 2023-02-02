@@ -942,7 +942,7 @@ Visual of TotalSteps each Id.
 ggplot(DailyActivity, aes(x = charId, y = TotalSteps, fill = charId))+
     geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))+
     scale_y_continuous(n.breaks = 10)+
-    labs(title = "The Daily TotalSteps of each Id", x = "Id", y = "TotalSteps")
+    labs(title = "The TotalSteps of each Id", x = "Id", y = "TotalSteps")
 
 ```
 
