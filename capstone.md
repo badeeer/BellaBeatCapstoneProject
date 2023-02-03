@@ -983,7 +983,7 @@ ggplot(DailyActivity, aes(x = charId, y = Calories, fill = typeOfActivity))+
 - This above chart is similar to the chart above it, the participants that have burning calories are very or highly active, but there are some Id burning calories without walking by at the gym or something unusual.
  how about the sleep quality? how the steps can affect the sleep quality of each Id?
 
-``
+```
 #sleepQuality and Total steps of Id 
 DailyActivity %>% 
   group_by(charId, SleepQuality, TotalSteps) %>% 
@@ -991,7 +991,7 @@ DailyActivity %>%
   ggplot(aes(x =  charId, y = TotalSteps, fill = SleepQualityNA))+
   geom_bar(stat = "identity", position = "dodge")  + theme(axis.text.x = element_text(angle = 90))+
   scale_y_continuous(n.breaks = 10)+
-  labs(title = "Total Sleep of al Id in terms of Sleep Quality ",  x = "Id", y = "Total Sleeps", 
+  labs(title = "Total Sleep of al Id in terms of Sleep Quality ",  x = "Id", y = "Total Steps", 
       )
 
 ```
