@@ -80,7 +80,7 @@ we have not about the age of the participants so we assume that the age is from 
 
 
 ## STEP ONE: **ASK**
-**Sršen** asks you to analyze smart device usage data in order to gain insight into 
+**Sršen** asks to analyze smart device usage data in order to gain insight into 
 how consumers use non-Bellabeat smart devices. through a guided question, and these questions are 
 
 **1. What are some trends in smart device usage?**
@@ -305,7 +305,7 @@ sum(duplicated(weightLogInfo))
 ```
 
 taken the duplicated() function of all datasets and summing up all  So there are 
-3 rows in sleepDay dataset are duplicated, let's remove it
+3 rows in sleepDay dataset are duplicated, let's remove it by pupping the sleepDay assingning to sleepDay and then using distinct fucntion distinct()
 
 ```
 sleepDay <- sleepDay %>% 
@@ -393,19 +393,23 @@ month, day, and year, and separate to month, day, year, and day of week.
 1.1 convert to date and time 
 
 ```{r}
+
 #convert AcivityDate to dailyActivity 
 dailyActivity <- dailyActivity %>%
   mutate(ActivityDate = (as.Date(ActivityDate, format="%m/%d/%Y")))
+  
 ```
 
 1.2 separate to month, day, year, and day of week 
 
 ```{r}
+
 #create more columns of Month, Day, Year, DayOfWeek
 dailyActivity$Day <- format(as.POSIXct(dailyActivity$ActivityDate), format = "%d")
 dailyActivity$Month <- format(as.POSIXct(dailyActivity$ActivityDate), format = "%m")
 dailyActivity$Year <- format(as.POSIXct(dailyActivity$ActivityDate), format = "%Y")
 dailyActivity$DayOfWeek <- format(as.POSIXct(dailyActivity$ActivityDate), format = "%a")
+
 ```
 
 -1.3 The structure of daily activity.
@@ -415,6 +419,7 @@ dailyActivity$DayOfWeek <- format(as.POSIXct(dailyActivity$ActivityDate), format
 
 colnames(dailyActivity)
 str(dailyActivity)
+
 ```
 
 2-heartrateSecond: convert the Time column to be in datetime then separate to day, 
@@ -440,6 +445,7 @@ heartrateSecond$DayOfWeek <- format(as.POSIXct(heartrateSecond$Time), format = "
 heartrateSecond$Hour <- format(as.POSIXct(heartrateSecond$Time), format = "%H")
 heartrateSecond$Minute <- format(as.POSIXct(heartrateSecond$Time), format = "%M")
 heartrateSecond$Second <- format(as.POSIXct(heartrateSecond$Time), format = "%S")
+
 ```
 
 2.3. see the structure of the columns name of heartrateSecond 
@@ -525,12 +531,14 @@ hourlySteps <- hourlySteps %>%
 
 5.2
 ```{r}
+
 #separate the Month, Day, Year, Hour, Month, Second, and Day of the week
 hourlySteps$Month <- format(as.POSIXct(hourlySteps$ActivityHour), format = "%m")
 hourlySteps$Day <- format(as.POSIXct(hourlySteps$ActivityHour), format = "%d")
 hourlySteps$Year <- format(as.POSIXct(hourlySteps$ActivityHour), format = "%Y")
 hourlySteps$DayOfWeek <- format(as.POSIXct(hourlySteps$ActivityHour), format = "%a")
 hourlySteps$Hour <- format(as.POSIXct(hourlySteps$ActivityHour), format = "%I")
+
 ```
 
 5.3:  structure and colnames of hourlySteps.
@@ -544,14 +552,19 @@ str(hourlySteps)
 6: mets: convert the ActivityMinute to  datetime then separate it to month, day, year, hour, minute, second  %p for pm and am 
 
 6.1: convert to ActivityMinute to datetime 
+
 ```{r}
+
 #ActivityMinute 
 mets <-  mets %>% 
   mutate(ActivityMinute = as.POSIXct(ActivityMinute, format ="%m/%d/%Y %I:%M:%S %p" , tz=Sys.timezone()))
+  
 ```
 
 6.2: convert the datetime to month,  day, year, hour, minute, second and %p
+
 ```{r}
+
 #create the day, month, year, hour, minute, second
 mets$Day <- format(as.POSIXct(mets$ActivityMinute), format = "%d")
 mets$Month <- format(as.POSIXct(mets$ActivityMinute), format = "%m")
@@ -573,6 +586,7 @@ str(mets)
 7: sleepDay: convert the SleepDay to DateTime and separating it into month, day, and year
 
 7.1:SleepDay convert to DateTime 
+
 ```{r}
 #create the ActivityDate
 sleepDay <- sleepDay %>% 
@@ -587,6 +601,7 @@ sleepDay$Day <- format(as.POSIXct(sleepDay$ActivityDate), format = "%d")
 sleepDay$Month <- format(as.POSIXct(sleepDay$ActivityDate), format = "%m")
 sleepDay$Year <- format(as.POSIXct(sleepDay$ActivityDate), format = "%Y")
 sleepDay$DayOfWeek <- format(as.POSIXct(sleepDay$ActivityDate), format = "%a")
+
 ```
 
 7.3: structure and colnames.
@@ -620,6 +635,7 @@ weightLogInfo$DayOfWeek <- format(as.POSIXct(weightLogInfo$ActivityDate), format
 weightLogInfo$Hour <- format(as.POSIXct(weightLogInfo$ActivityDate), format = "%I")
 weightLogInfo$Minute <- format(as.POSIXct(weightLogInfo$ActivityDate), format = "%M")
 weightLogInfo$Second <- format(as.POSIXct(weightLogInfo$ActivityDate), format = "%S")
+
 ```
 
 8.3: structure and colnames of weightLogInfo.
