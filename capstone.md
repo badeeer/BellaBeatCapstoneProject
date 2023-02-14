@@ -726,23 +726,17 @@ heartrate <- heartrateSecond %>%
   group_by(Hour) %>% 
   summarise(meanValue = mean(Value), Value,
             Time, Id, Day, Month, Year, DayOfWeek)
+            
 ```
 
-- > create average of value in terms of hour in heartraterate
-
-```{r}
-heartrate <- heartrateSecond %>% 
-  group_by(Hour) %>% 
-  summarise(meanValue = mean(Value), Value,
-            Time, Id, Day, Month, Year, DayOfWeek)
-
-```
 
 - > reorder the hearterate dataset columns.
 
 ```{r}
+
 heartrate <- heartrate[,c("Id", "Time", "Day", "Month", "DayOfWeek", "Year", "Hour",
                           "Value", "meanValue")]
+                          
 ```
 
 - > Create average of METs in terms of Hour:
@@ -781,7 +775,7 @@ dailyActivity <- dailyActivity[-5]
 
 ```
 
-3.1- Create a category column called typeOfActivity (AverageSteps, typeOfActivity):
+3.2- Create a category column called typeOfActivity (AverageSteps, typeOfActivity):
 
 ```{r}
 dailyActivity <- dailyActivity %>% 
@@ -795,7 +789,7 @@ dailyActivity <- dailyActivity %>%
 
 ```
 
-3.2- create new columns in sleepDay (TotalHourAsleep, SleepQuality).
+3.3- create new columns in sleepDay (TotalHourAsleep, SleepQuality).
 
 ```{r}
 sleepDay <- sleepDay %>% 
@@ -806,7 +800,7 @@ sleepDay <- sleepDay %>%
 
 ```
 
-3.3- create a BmiResult in weightLogInfo.
+3.4- create a BmiResult in weightLogInfo.
 
 ```{r}
 weightLogInfo <- weightLogInfo %>% 
@@ -819,24 +813,26 @@ weightLogInfo <- weightLogInfo %>%
 
 ```
 
-3.4- reorder sleepDay columns 
+3.5- reorder sleepDay columns 
 
 ```{r}
 
 sleepDay <- sleepDay[,c("Id", "ActivityDate", "Day", "Month", "Year", "DayOfWeek", "TotalSleepRecords",
                         "TotalMinutesAsleep", "TotalTimeInBed", "TotalHourAsleep", "SleepQuality")]
+                        
 ```
 
-3.5- reoder weightLogInfo columns.
+3.6- reoder weightLogInfo columns.
 
 ```{r}
 weightLogInfo <- weightLogInfo[,c("Id", "ActivityDate", "Day", "Month", "Year", "DayOfWeek", 
                                   "Hour", "Minute", "Second", "WeightKg", "WeightPounds",
                                   "Fat", "BMI", "IsManualReport", "LogId", "BmiReslut")]
+                                  
 ```
 
 
-3.6 reoder the dailyActivity columns.
+3.7 reoder the dailyActivity columns.
 
 ```{r}
 
@@ -848,7 +844,7 @@ dailyActivity <- dailyActivity[, c("Id", "ActivityDate", "Day", "Month", "Year",
                                    "typeOfActivity")]
 ```
 
-3.7- merge the dailyActivity and sleepDay in DailyActivity by left_join (): that return columns from dailyActivity and machted columns from the eight sleep
+3.8- merge the dailyActivity and sleepDay in DailyActivity by left_join (): that return columns from dailyActivity and machted columns from the eight sleep
 
 ```
 sleepDay <- sleepDay[-5]
