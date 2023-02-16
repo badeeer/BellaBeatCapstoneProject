@@ -1346,7 +1346,6 @@ corHourly_cor <- cor(corhourly, method = "pearson")
 corrplot(corHourly_cor, method = "number")
 
 ```
-
 - as you can see in the cor plot above the Calories have a strong correlation with the three.
 
 ### 5.3  create a model to predicate the calories in both dailyActivity and HourlyActivity 
@@ -1440,17 +1439,20 @@ cor.test(corhourly$StepTotal, corhourly$Calories)
 
 #AverageIntensity and calories
 cor.test(corhourly$AverageIntensity, corhourly$Calories)
+
 ```
 
 #### CREATE A MODEL IN DAILYACTIVITY
 let's create a linear model by using multiple features(TotalSteps, TotalDistance, VeryActiveMinutes)
 
 ```
+
 lm_model <- lm(Calories ~ TotalSteps + TotalDistance + VeryActiveMinutes 
                , data= corDaily)
+               
 ```
 
-resume of lm_model
+summary of lm_model
 
 ```
 summary(lm_model)
@@ -1485,6 +1487,7 @@ let's create a model using Generalized Least Squares or gls for short and its ge
 #gls model weights
 gls_model <- gls(Calories ~ TotalDistance + VeryActiveMinutes, data=corDaily, 
                  weights = varConstPower())
+                 
 ```
 
 summary of gls_model
